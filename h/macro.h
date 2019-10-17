@@ -65,6 +65,10 @@
     }\
 }while(0)
 
+#define RAII_VARIABLE(vartype, varname, initval, dtor) \
+    void _dtor_ ## varname (vartype * v) { dtor(*v); } \
+    vartype varname __attribute__((cleanup(_dtor_ ## varname))) = (initval)
+
 #define free_to_NULL(ptr) do{\
     if(NULL != (ptr) ) {free(ptr);ptr = NULL;}\
 }while(0)
