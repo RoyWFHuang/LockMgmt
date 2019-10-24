@@ -15,7 +15,10 @@ ifeq ($(ERROR_MSG_MODE), yes)
 endif
 
 ifeq ($(DEBUG_MODE), yes)
-CFLAG += -DDEBUG_MODE
+    CFLAG += -DDEBUG_MODE
+    ifeq ($(LKM_DEBUG_MODE), yes)
+        CFLAG += -DLKM_DEBUG_MODE
+    endif
 endif
 
 ifeq ($(SYSLOG), yes)
