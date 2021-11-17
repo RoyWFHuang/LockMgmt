@@ -15,13 +15,13 @@
   *
   */
 #define strupper(buf) do{\
-    int strupper_index_int = 0;\
-    while(buf[strupper_index_int])\
+    int strupper_index = 0;\
+    while(buf[strupper_index])\
     {\
-        if(buf[strupper_index_int] > 'a' && buf[strupper_index_int] < 'z')\
-            buf[strupper_index_int++] &= '_';\
+        if(buf[strupper_index] > 'a' && buf[strupper_index] < 'z')\
+            buf[strupper_index++] &= '_';\
         else\
-            strupper_index_int++;\
+            strupper_index++;\
     }\
 \
 }while(0)
@@ -32,13 +32,13 @@
   *
   */
 #define strlower(buf) do{\
-    int strlower_index_int = 0;\
-    while(buf[strlower_index_int])\
+    int strlower_index = 0;\
+    while(buf[strlower_index])\
     {\
-        if(buf[strlower_index_int] > 'A' && buf[strlower_index_int] < 'Z')\
-            buf[strlower_index_int++] |= ' ';\
+        if(buf[strlower_index] > 'A' && buf[strlower_index] < 'Z')\
+            buf[strlower_index++] |= ' ';\
         else\
-            strlower_index_int++;\
+            strlower_index++;\
     }\
 \
 }while(0)
@@ -51,17 +51,17 @@
   */
 #define strcpyALL(buf,...) do{ \
     char *a[] = { __VA_ARGS__, NULL}; \
-    int strcpyALL_len_int = 1, strcpyALL_index_int = 0;\
-    while(a[strcpyALL_index_int])\
+    int strcpyALL_len = 1, strcpyALL_index = 0;\
+    while(a[strcpyALL_index])\
     {\
-        strcpyALL_len_int += strlen(a[strcpyALL_index_int++]);\
+        strcpyALL_len += strlen(a[strcpyALL_index++]);\
     }\
-    buf = malloc(sizeof(char[strcpyALL_len_int]));\
-    memset(buf, 0, sizeof(char[strcpyALL_len_int]));\
-    strcpyALL_index_int = 0;\
-    while(a[strcpyALL_index_int])\
+    buf = malloc(sizeof(char[strcpyALL_len]));\
+    memset(buf, 0, sizeof(char[strcpyALL_len]));\
+    strcpyALL_index = 0;\
+    while(a[strcpyALL_index])\
     {\
-        strcat((char *)buf, a[strcpyALL_index_int++]);\
+        strcat((char *)buf, a[strcpyALL_index++]);\
     }\
 }while(0)
 

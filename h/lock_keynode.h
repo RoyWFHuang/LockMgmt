@@ -22,8 +22,8 @@ typedef enum _eLockType
 
 typedef struct _tLockNode
 {
-    uint8_t node_entry_lock_int;
-    char *name_pchar;
+    uint8_t node_entry_lock;
+    char *name;
     uint8_t write_lock;
     uint64_t read_lock;
     struct list_head list_struct;
@@ -32,19 +32,19 @@ typedef struct _tLockNode
 
 struct _tLockTable
 {
-    uint8_t destroy_lock_int;
-    uint64_t used_cnt_int;
-    struct list_head *hash_table_pastruct[MAX_LOCK_TABLE_INDEX];
+    uint8_t destroy_lock;
+    uint64_t used_cnt;
+    struct list_head *hash_table[MAX_LOCK_TABLE_INDEX];
     uint8_t hash_table_entry_lock_aint[MAX_LOCK_TABLE_INDEX];
 };
 
 int set_table_lock(
-    char *src_path_pchar,
-    struct _tLockTable *lock_table_pstruct);
+    char *src_path,
+    struct _tLockTable *lock_table);
 
 int set_table_unlock(
-    char *src_path_pchar,
-    struct _tLockTable *lock_table_pstruct);
+    char *src_path,
+    struct _tLockTable *lock_table);
 
 
 #endif
